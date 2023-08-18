@@ -11,25 +11,26 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.kkeb.bus_ticket_flutter.entities.Bus;
+import com.kkeb.bus_ticket_flutter.entities.City;
 import com.kkeb.bus_ticket_flutter.models.ResponseModel;
-import com.kkeb.bus_ticket_flutter.services.BusService;
+import com.kkeb.bus_ticket_flutter.services.CityService;
 
 @RestController
-@RequestMapping("/api/bus")
-public class BusController{
+@RequestMapping("/api/city")
+public class CityController {
 
     @Autowired
-    private BusService busService;
+    CityService cityService;
 
     @PostMapping("/add")
-    public ResponseModel<Bus> addBus(@RequestBody Bus bus){
-        final Bus savedBus = busService.addBus(bus);
-        return new ResponseModel<Bus>(HttpStatus.OK.value(), "Bus Saved Successfully", savedBus);
+    public ResponseModel<City> addBus(@RequestBody City city) {
+        final City savedCity = cityService.addCity(city);
+        return new ResponseModel<City>(HttpStatus.OK.value(), "City Saved Successfully", savedCity);
     }
 
     @GetMapping("/all")
-    public ResponseModel<List<Bus>> getAllBus(){
-        return new ResponseModel<>(HttpStatus.OK.value(), "Data fetched successfully", busService.getAllBus());
+    public ResponseModel<List<City>> getAllBus() {
+        return new ResponseModel<>(HttpStatus.OK.value(), "Data fetched successfully", cityService.getAllCities());
     }
 
 }

@@ -32,7 +32,7 @@ public class SecurityConfig {
     SecurityFilterChain defaultSecurityFilterChain(HttpSecurity http) throws Exception {
         http.csrf(AbstractHttpConfigurer::disable).authorizeHttpRequests((authReq) -> authReq
                 .requestMatchers(HttpMethod.GET).permitAll().requestMatchers("/api/auth/**").permitAll()
-                .requestMatchers(HttpMethod.POST, "/api/bus/add", "/api/schedule/add", "/api/route/add").authenticated()
+                .requestMatchers(HttpMethod.POST, "/api/bus/add", "/api/schedule/add", "/api/route/add", "api/city/add").authenticated()
                 /* .requestMatchers(HttpMethod.GET, "/api/reservation/all").authenticated() */
                 .requestMatchers(HttpMethod.POST, "/api/reservation/add").permitAll())
                 .exceptionHandling(exception -> exception.authenticationEntryPoint(jwtEntryPoint))
