@@ -5,4 +5,4 @@ RUN mvn clean package DskipTests
 FROM openjdk:18-ea-20-jdk-slim
 COPY --from=build /target/bus_ticket_flutter-0.0.1-SNAPSHOT.jar btsb.jar
 EXPOSE 8080
-ENTRYPOINT["java", "-jar", "btsb.jar"]
+ENTRYPOINT ["java","-jar","btsb.jar"]
